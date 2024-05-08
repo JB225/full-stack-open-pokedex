@@ -11,7 +11,7 @@ const { defineConfig, devices } = require('@playwright/test')
  * @see https://playwright.dev/docs/test-configuration
  */
 module.exports = defineConfig({
-  testDir: './tests',
+  testDir: './e2e-tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -39,38 +39,18 @@ module.exports = defineConfig({
     {
       name: 'webkit',
       use: { ...devices['Desktop Safari'] },
-    },
-
-    /* Test against mobile viewports. */
-    // {
-    //   name: 'Mobile Chrome',
-    //   use: { ...devices['Pixel 5'] },
-    // },
-    // {
-    //   name: 'Mobile Safari',
-    //   use: { ...devices['iPhone 12'] },
-    // },
-
-    /* Test against branded browsers. */
-    // {
-    //   name: 'Microsoft Edge',
-    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    // },
-    // {
-    //   name: 'Google Chrome',
-    //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
-    // },
+    }
   ],
 
   /* Run your local dev server before starting the tests */
   webServer: {
     command: 'npm start',
-    url: 'http://192.168.1.140:5000/',
+    url: 'http://192.168.1.140:8080/',
     timeout: 120 * 1000,
     reuseExistingServer: !process.env.CI
   },
   use: {
-    baseURL: 'http://localhost:5000/'
+    baseURL: 'http://localhost:8080/'
   }
 })
 
