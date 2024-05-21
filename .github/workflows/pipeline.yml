@@ -57,5 +57,5 @@ jobs:
         if: ${{ failure() }}
         with:
           severity: error
-          details: Test Failed!
+          details: Build Failed!
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
